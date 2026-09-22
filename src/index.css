@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background: #FBF3E7;
+  color: #221420;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* iOS-style safe-area padding for the app shell */
+.app-shell {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.bottom-nav {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+input, select, textarea, button {
+  font-family: inherit;
+}
+
+::-webkit-scrollbar { width: 0; height: 0; }
+
+/* Respect the OS-level reduced-motion preference: Tailwind's `animate-pulse` (loading
+   skeletons) and the `transition` press-effect on buttons don't opt out of this on their own,
+   so collapse both to instant, non-animated states for anyone who has asked for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
